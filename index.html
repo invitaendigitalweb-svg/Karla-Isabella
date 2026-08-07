@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --barbie-pink: #FF1493;
+      --barbie-hot: #FF69B4;
+      --pool-azul: #00BFFF;
+      --pool-agua: #E0F7FA;
+      --sol-amarillo: #FFD700;
+      --texto-color: #4A4A4A;
+      --blanco: #ffffff;
+    }
+
+    body { 
+      background-color: transparent; 
+      margin: 0;
+      padding: 5px; 
+      color: var(--texto-color); 
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container { 
+        max-width: 320px;
+        margin: auto; 
+        background-color: var(--blanco);
+        border: 4px solid var(--pool-azul); 
+        padding: 15px 20px; 
+        border-radius: 25px; 
+        box-shadow: 6px 6px 0px var(--barbie-hot); 
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Detalle visual superior tipo ola de alberca */
+    .container::before {
+        content: "🌊 🦩 ☀️ 🌴 🌊";
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 5px;
+        letter-spacing: 2px;
+    }
+    
+    label.titulo { 
+      display: block; 
+      margin-top: 12px; 
+      font-family: 'Fredoka', cursive; 
+      font-size: 15px; 
+      margin-bottom: 6px; 
+      color: var(--barbie-pink); 
+    }
+
+    input[type="text"], textarea { 
+      width: 100%; 
+      padding: 8px 12px; 
+      border: 2px solid var(--pool-azul); 
+      border-radius: 12px; 
+      box-sizing: border-box; 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      background-color: var(--pool-agua);
+      outline: none;
+      color: var(--texto-color);
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      border-color: var(--barbie-pink);
+    }
+
+    .opciones { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+    
+    .opcion-item { 
+      display: flex; 
+      align-items: center; 
+      cursor: pointer; 
+      font-size: 13px;
+      font-weight: 600;
+      background: #fdfdfd;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid #ffe6f2;
+      transition: background 0.2s;
+    }
+
+    .opcion-item:hover {
+      background: #fff0f7;
+    }
+
+    .opcion-item input { 
+      margin-right: 8px; 
+      width: 16px; 
+      height: 16px; 
+      accent-color: var(--barbie-pink); 
+    }
+
+    button { 
+      background-color: var(--barbie-pink); 
+      color: var(--blanco); 
+      padding: 12px; 
+      border: none; 
+      border-bottom: 4px solid #C71585;
+      border-radius: 15px; 
+      cursor: pointer; 
+      width: 100%; 
+      margin-top: 15px; 
+      font-size: 16px; 
+      font-family: 'Fredoka', cursive;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s ease; 
+    }
+
+    button:active { transform: translateY(2px); border-bottom: 2px solid #C71585; }
+
+    #exito { display: none; text-align: center; padding: 20px 10px; }
+    #exito h3 { color: var(--barbie-pink); font-family: 'Fredoka', cursive; font-size: 20px; }
+
+    .emoji-decor { font-size: 28px; margin-bottom: 5px; display: block; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div id="formContent">
+    <div style="text-align: center;"><span class="emoji-decor">🍸🌴✨</span></div>
+    <form id="rsvpForm">
+      
+      <label class="titulo">Nombre</label>
+      <input type="text" name="nombre" placeholder="Tu nombre..." required>
+
+      <label class="titulo">¿Contamos contigo?</label>
+      <div class="opciones">
+        <label class="opcion-item">
+          <input type="radio" name="asistencia" value="Si, Ahí estaré" checked>  Si, confirmo asistencia 🦩💦
+        </label>
+        <label class="opcion-item">
+          <input type="radio" name="asistencia" value="No podré ir"> No podré ir🌴😢
+        </label>
+      </div>
+
+      <label class="titulo">Mensajito (opcional)</label>
+      <textarea name="mensaje" rows="2" placeholder="Escribe algun mensaje o felicitación..."></textarea>
+
+      <button type="submit" id="btn">¡ENVIAR! 🌊</button>
+    </form>
+  </div>
+
+  <div id="exito">
+    <span class="emoji-decor">🦩💖👙</span>
+    <h3>¡Respuesta recibida!</h3>
+  </div>
+</div>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwwVCL7zICS2b1c-ZhC9Div7n7TpdciRLmWg4pChEsbnOF9uOZMWkRd4or1F_JT50NEQw/exec';
+  const form = document.getElementById('rsvpForm');
+  const btn = document.getElementById('btn');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.innerText = 'ENVIANDO... 💦';
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+    .then(() => {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('exito').style.display = 'block';
+    })
+    .catch(error => {
+      alert('Error. ¡Intenta de nuevo! ✨');
+      btn.disabled = false;
+      btn.innerText = '¡A NADO! 🌊';
+    });
+  });
+</script>
+
+</body>
+</html>
