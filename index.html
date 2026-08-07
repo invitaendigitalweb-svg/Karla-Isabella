@@ -17,19 +17,19 @@
     body { 
       background-color: transparent; 
       margin: 0;
-      padding: 5px; 
+      padding: 10px; 
       color: var(--texto-color); 
       font-family: 'Montserrat', sans-serif;
     }
 
     .container { 
-        max-width: 320px;
+        max-width: 500px;
         margin: auto; 
         background-color: var(--blanco);
-        border: 4px solid var(--pool-azul); 
-        padding: 15px 20px; 
-        border-radius: 25px; 
-        box-shadow: 6px 6px 0px var(--barbie-hot); 
+        border: 6px solid var(--pool-azul); 
+        padding: 25px 30px; 
+        border-radius: 35px; 
+        box-shadow: 8px 8px 0px var(--barbie-hot); 
         position: relative;
         overflow: hidden;
     }
@@ -39,28 +39,28 @@
         content: "🌊 🦩 ☀️ 🌴 🌊";
         display: block;
         text-align: center;
-        font-size: 16px;
-        margin-bottom: 5px;
-        letter-spacing: 2px;
+        font-size: 24px;
+        margin-bottom: 12px;
+        letter-spacing: 4px;
     }
     
     label.titulo { 
       display: block; 
-      margin-top: 12px; 
+      margin-top: 18px; 
       font-family: 'Fredoka', cursive; 
-      font-size: 15px; 
-      margin-bottom: 6px; 
+      font-size: 22px; 
+      margin-bottom: 8px; 
       color: var(--barbie-pink); 
     }
 
     input[type="text"], textarea { 
       width: 100%; 
-      padding: 8px 12px; 
-      border: 2px solid var(--pool-azul); 
-      border-radius: 12px; 
+      padding: 14px 18px; 
+      border: 3px solid var(--pool-azul); 
+      border-radius: 16px; 
       box-sizing: border-box; 
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 18px;
       background-color: var(--pool-agua);
       outline: none;
       color: var(--texto-color);
@@ -70,18 +70,18 @@
       border-color: var(--barbie-pink);
     }
 
-    .opciones { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+    .opciones { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
     
     .opcion-item { 
       display: flex; 
       align-items: center; 
       cursor: pointer; 
-      font-size: 13px;
+      font-size: 18px;
       font-weight: 600;
       background: #fdfdfd;
-      padding: 6px 10px;
-      border-radius: 10px;
-      border: 1px solid #ffe6f2;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 2px solid #ffe6f2;
       transition: background 0.2s;
     }
 
@@ -90,35 +90,35 @@
     }
 
     .opcion-item input { 
-      margin-right: 8px; 
-      width: 16px; 
-      height: 16px; 
+      margin-right: 12px; 
+      width: 22px; 
+      height: 22px; 
       accent-color: var(--barbie-pink); 
     }
 
     button { 
       background-color: var(--barbie-pink); 
       color: var(--blanco); 
-      padding: 12px; 
+      padding: 16px; 
       border: none; 
-      border-bottom: 4px solid #C71585;
-      border-radius: 15px; 
+      border-bottom: 6px solid #C71585;
+      border-radius: 20px; 
       cursor: pointer; 
       width: 100%; 
-      margin-top: 15px; 
-      font-size: 16px; 
+      margin-top: 22px; 
+      font-size: 22px; 
       font-family: 'Fredoka', cursive;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       transition: all 0.2s ease; 
     }
 
-    button:active { transform: translateY(2px); border-bottom: 2px solid #C71585; }
+    button:active { transform: translateY(3px); border-bottom: 3px solid #C71585; }
 
-    #exito { display: none; text-align: center; padding: 20px 10px; }
-    #exito h3 { color: var(--barbie-pink); font-family: 'Fredoka', cursive; font-size: 20px; }
+    #exito { display: none; text-align: center; padding: 30px 10px; }
+    #exito h3 { color: var(--barbie-pink); font-family: 'Fredoka', cursive; font-size: 28px; }
 
-    .emoji-decor { font-size: 28px; margin-bottom: 5px; display: block; }
+    .emoji-decor { font-size: 40px; margin-bottom: 10px; display: block; }
   </style>
 </head>
 <body>
@@ -142,7 +142,7 @@
       </div>
 
       <label class="titulo">Mensajito (opcional)</label>
-      <textarea name="mensaje" rows="2" placeholder="Escribe algun mensaje o felicitación..."></textarea>
+      <textarea name="mensaje" rows="3" placeholder="Escribe algun mensaje o felicitación..."></textarea>
 
       <button type="submit" id="btn">¡ENVIAR! 🌊</button>
     </form>
